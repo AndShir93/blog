@@ -1,12 +1,13 @@
 import React, { ReactNode } from "react";
 import Header from "./Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
   children: ReactNode;
 };
 
 const Layout: React.FC<Props> = (props) => (
-  <div>
+  <>
     <Header />
     <div className="layout">{props.children}</div>
     <style jsx global>{`
@@ -27,14 +28,11 @@ const Layout: React.FC<Props> = (props) => (
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
           "Segoe UI Symbol";
-        background: rgba(0, 0, 0, 0.05);
       }
-
       input,
       textarea {
         font-size: 16px;
       }
-
       button {
         cursor: pointer;
       }
@@ -44,7 +42,7 @@ const Layout: React.FC<Props> = (props) => (
         padding: 0 2rem;
       }
     `}</style>
-  </div>
+  </>
 );
 
 export default Layout;
