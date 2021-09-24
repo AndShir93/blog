@@ -13,7 +13,7 @@ model Todos {
     id             Int @default(autoincrement()) @id
     text           String?
     description    String
-    createdAt      DateTime  @default(now()) @map(name: "created_at")
+    createdAt      String
     author         User?   @relation(fields: [authorId], references: [id])
     authorId       Int?
     done           Boolean
@@ -24,7 +24,8 @@ model User {
   id            Int       @default(autoincrement()) @id
   name          String?
   email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  createdAt     String
   todos         Todos[]
+  password      String
   @@map(name: "users")
 }

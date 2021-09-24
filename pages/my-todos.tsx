@@ -1,7 +1,8 @@
 import React from 'react';
 
-const MyTodos = () => {
-
+const MyTodos = (props) => {
+    const {id} = props;
+    console.log(id);
     return (
         <>
             <></>

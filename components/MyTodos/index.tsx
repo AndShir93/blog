@@ -1,36 +1,34 @@
 import React from 'react';
-import {Accordion, Card} from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import { IWeekday } from "../../types";
+import TodoBody from "./todoBody";
 
-const MyTodos = () => {
+const MyTodos = ({todos}) => {
+    const weekdays:IWeekday[] = [
+        {id: 'monday', name: 'Понедельник'},
+        {id: 'tuesday', name: 'Вторник'},
+        {id: 'wednesday', name: 'Среда'},
+        {id: 'thursday', name: 'Четверг'},
+        {id: 'friday', name: 'Пятница'},
+        {id: 'saturday', name: 'Суббота'},
+        {id: 'sunday', name: 'Воскресенье'},
+    ];
 
     return(
-        <>
-            <h2>Понедельник</h2>
-            <Accordion>
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
-                        TAB 1
-                    </Accordion.Toggle>
-
-                    <Accordion.Collapse eventKey="0">
-                        <Card.Body>This is first tab body</Card.Body>
-                    </Accordion.Collapse>
-                </Card>
-
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="1">
-                        TAB 2
-                    </Accordion.Toggle>
-
-                    <Accordion.Collapse eventKey="1">
-                        <Card.Body>This is second tab body</Card.Body>
-                    </Accordion.Collapse>
-                </Card>
-            </Accordion>
-        </>
+        <Container>
+            <Row>
+                {weekdays.map(({ name, id })=>
+                    <Col md={6} lg={4} key={id}>
+                        <h2>{name}</h2>
+                        <TodoBody
+                            dayId={id}
+                            todos={todos}
+                        />
+                    </Col>
+                )}
+            </Row>
+        </Container>
     )
 }
-
-
 
 export default MyTodos;

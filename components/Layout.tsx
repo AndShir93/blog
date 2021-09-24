@@ -14,7 +14,6 @@ const Layout: React.FC<Props> = (props) => (
       html {
         box-sizing: border-box;
       }
-
       *,
       *:before,
       *:after {
