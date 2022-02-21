@@ -1,7 +1,7 @@
 import prisma from "../../../lib/prisma";
 
 export default async function sendTask(req, res) {
-  const {day, title, description} = req.body;
+  const { day, title, description, id } = req.body;
   const date = new Date();
   const createdAt = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
 
@@ -10,7 +10,7 @@ export default async function sendTask(req, res) {
       text: title,
       description,
       createdAt,
-      authorId: 20,
+      authorId: id,
       done: false,
       day,
     },

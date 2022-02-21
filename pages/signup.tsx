@@ -57,6 +57,8 @@ const Signup = ({ usersEmail }) => {
     };
 
     return (
+      <>
+        <title>Регистрация</title>
         <Layout>
             <Container>
                 <Row className={"justify-content-center"}>
@@ -110,6 +112,7 @@ const Signup = ({ usersEmail }) => {
                 </Row>
             </Container>
         </Layout>
+      </>
     );
 };
 
