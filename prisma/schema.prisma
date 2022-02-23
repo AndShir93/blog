@@ -9,23 +9,56 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
 model Todos {
-    id             Int @default(autoincrement()) @id
-    text           String?
-    description    String
-    createdAt      String
-    author         User?   @relation(fields: [authorId], references: [id])
-    authorId       Int?
-    done           Boolean
-    day            String?
+  id          Int     @id @default(autoincrement())
+  text        String?
+  description String
+  createdAt   String
+  author      User?   @relation(fields: [authorId], references: [id])
+  authorId    Int?
+  done        Boolean
+  day         String?
 }
 
 model User {
-  id            Int       @default(autoincrement()) @id
-  name          String?
-  email         String?   @unique
-  createdAt     String
-  todos         Todos[]
-  password      String
+  id        Int     @id @default(autoincrement())
+  name      String?
+  email     String? @unique
+  createdAt String
+  todos     Todos[]
+  password  String
+
   @@map(name: "users")
+}
+
+model Subcategory {
+  id         Int         @id @default(autoincrement())
+  name       String?
+  price      String?
+  category   Categories? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+}
+
+model Categories {
+  id            Int           @id @default(autoincrement())
+  name          String?
+  subcategories Subcategory[]
+
+  @@map(name: "categories")
+}
+
+model Brand {
+  id            Int    @id @default(autoincrement())
+  brand         String
+  model         Model[]
+}
+
+model Model {
+  id            Int     @id @default(autoincrement())
+  model         String
+  brandName     Brand? @relation(fields: [brandId], references: [id])
+  brandId       Int?
+  price         String?
+  image         String?
 }

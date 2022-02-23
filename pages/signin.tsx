@@ -33,7 +33,6 @@ const SignIn = () => {
         });
     } catch {
       setIsInvalidCredentials(true);
-      console.log('error');
     }
   }
 

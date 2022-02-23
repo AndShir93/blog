@@ -2,12 +2,14 @@ import React from "react";
 import { AppProps } from 'next/app'
 import Context, { DEFAULT_USER } from '../Context.js';
 import jwt from 'jsonwebtoken';
+import { ICategories } from "../components/Menu/Menu";
 
 
 export interface IUser {
   id: number;
   email: string;
   name: string;
+  categories: ICategories[];
 }
 
 const App = ({ Component, pageProps }: AppProps) => {

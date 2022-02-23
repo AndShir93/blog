@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import MyTodos from "../components/MyTodos";
 import prisma from '../lib/prisma';
 import {IData} from "../types";
-import {GetServerSideProps} from "next";
+import { GetServerSideProps } from "next";
 import jwt from 'jsonwebtoken';
 
 interface IProps {
@@ -41,6 +41,16 @@ const Todos: TTodos = ({todos}) => {
 export default Todos;
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const categories = await prisma.categories.findMany({
+    include: {
+      subcategories: true,
+    },
+  });
+  const brand = await prisma.brand.findMany({
+    include: {
+      model: true,
+    }
+  });
   const todos: Array<IData> = await prisma.todos.findMany({
     include: {
       author: {
@@ -51,6 +61,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   });
   return {
-    props: {todos},
+    props: {
+      todos,
+      categories,
+      brand,
+    },
   }
 }
