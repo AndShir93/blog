@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Nav, Navbar} from "react-bootstrap";
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 
 export interface ICategories {
@@ -20,7 +20,7 @@ const Menu: TView = ({ categories }) => {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Nav>
-            {categories.map(({ id, name}) => <p key={id}>{name}</p>)}
+            {categories.map(({ id, name }) => <p key={id}>{name}</p>)}
           </Nav>
         </Container>
       </Navbar>

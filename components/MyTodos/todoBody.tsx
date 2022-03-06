@@ -1,12 +1,12 @@
 import React from 'react';
-import {Accordion, Card, ListGroup, ListGroupItem} from "react-bootstrap";
+import { Accordion, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const TodoBody = ({dayId, todos}) => {
-    const dayTodos = todos.filter(({day}) => dayId === day);
+const TodoBody = ({ dayId, todos }) => {
+    const dayTodos = todos.filter(({ day }) => dayId === day);
 
     return (
-        dayTodos.map(({text, description, author}) =>
-            <Accordion>
+        dayTodos.map(({ text, description, author, id }) =>
+            <Accordion key={id}>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
                         {text}

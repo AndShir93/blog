@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from "../components/Layout";
-import MyTodos from "../components/MyTodos";
+import Layout from '../components/Layout';
+import MyTodos from '../components/MyTodos';
 import prisma from '../lib/prisma';
-import {IData} from "../types";
-import { GetServerSideProps } from "next";
+import { IData } from '../types';
+import { GetServerSideProps } from 'next';
 import jwt from 'jsonwebtoken';
 
 interface IProps {
@@ -12,8 +12,8 @@ interface IProps {
 
 type TTodos = (props: IProps) => JSX.Element;
 
-const Todos: TTodos = ({todos}) => {
-  const [userTodos, setUserTodos] = React.useState([]);
+const Todos: TTodos = ({ todos }) => {
+  const [ userTodos, setUserTodos ] = React.useState([]);
   React.useEffect(() => {
     const user = jwt.decode(window.localStorage.token);
     setUserTodos(() => {
@@ -29,7 +29,7 @@ const Todos: TTodos = ({todos}) => {
     <>
         <title>Главная</title>
         <Layout>
-          <div className={"d-flex align-items-center justify-content-center"}>
+          <div className={'d-flex align-items-center justify-content-center'}>
             <h1>Todos</h1>
           </div>
           <MyTodos todos={userTodos}/>

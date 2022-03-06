@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
-import prisma from "../../../lib/prisma";
+import prisma from '../../../lib/prisma';
 
 const KEY = 'sfadfgsjkjlyuifgnbmfu';
 
