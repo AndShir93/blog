@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Button, Form } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 
 interface IProps{
   handleAddBrand: (brand: string) => void;
@@ -8,7 +8,7 @@ interface IProps{
 type TView = (props: IProps) => JSX.Element;
 
 const BrandAddForm: TView = ({ handleAddBrand }) => {
-  const [brand, setBrand] = useState<string>('');
+  const [ brand, setBrand ] = useState<string>('');
   const handleChange = ({ target }) => {
     const { value } = target;
     setBrand(value);
@@ -19,7 +19,7 @@ const BrandAddForm: TView = ({ handleAddBrand }) => {
     handleAddBrand(brand);
     await fetch('./api/sendBrand/', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ brand }),
     })
   }
@@ -27,15 +27,15 @@ const BrandAddForm: TView = ({ handleAddBrand }) => {
   return (
     <>
       <Form onSubmit={sendBrand}>
-        <Form.Group className={"mt-3"}>
+        <Form.Group className={'mt-3'}>
           <Form.Label>Добавить брэнд</Form.Label>
           <Form.Control
-            type={"text"}
-            name={"brand"}
+            type={'text'}
+            name={'brand'}
             onChange={handleChange}
           />
         </Form.Group>
-        <Button className={"mt-3 d-block m-auto"} type={"submit"} variant={"success"}>Добавить</Button>
+        <Button className={'mt-3 d-block m-auto'} type={'submit'} variant={'success'}>Добавить</Button>
       </Form>
     </>
   );

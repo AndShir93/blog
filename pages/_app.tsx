@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import { AppProps } from 'next/app'
 import Context, { DEFAULT_USER } from '../Context.js';
 import jwt from 'jsonwebtoken';
-import { ICategories } from "../components/Menu/Menu";
+import { ICategories } from '../components/Menu/Menu';
 
 
 export interface IUser {
@@ -13,7 +13,7 @@ export interface IUser {
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const [user, setUser] = React.useState<IUser>(DEFAULT_USER);
+  const [ user, setUser ] = React.useState<IUser>(DEFAULT_USER);
   React.useEffect(() => {
     const token = jwt.decode(window.localStorage.token);
     if (!token) return setUser(DEFAULT_USER);

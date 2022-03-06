@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import { Button, Form } from "react-bootstrap";
-import {IBrand, IModel} from "../../pages/page.types";
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { IBrand, IModel } from '../../pages/page.types';
 
 interface ITarget {
   value: string;
@@ -14,7 +14,7 @@ interface IProps {
 type TView = (props: IProps) => JSX.Element;
 
 const ModelAddForm: TView = ({ brands }) => {
-  const [model, setModel] = useState<IModel>({
+  const [ model, setModel ] = useState<IModel>({
     model: '',
     brandId: 0,
     price: '',
@@ -37,7 +37,7 @@ const ModelAddForm: TView = ({ brands }) => {
     e.preventDefault();
     await fetch('./api/sendModel/', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(model),
     })
   }
@@ -45,44 +45,44 @@ const ModelAddForm: TView = ({ brands }) => {
   return (
     <>
       <Form onSubmit={sendModel}>
-        <Form.Group className={"mt-3"}>
+        <Form.Group className={'mt-3'}>
           <Form.Label>Модель</Form.Label>
           <Form.Control
-            type={"text"}
-            name={"model"}
+            type={'text'}
+            name={'model'}
             onChange={handleModelForm}
           />
         </Form.Group>
-        <Form.Group className={"mt-3"}>
+        <Form.Group className={'mt-3'}>
           <Form.Label>Брэнд</Form.Label>
           <Form.Control
             as="select"
-            type={"text"}
-            name={"brandId"}
+            type={'text'}
+            name={'brandId'}
             onChange={handleModelForm}
           >
             {brands.map(({ id, brand }) =>
-              <option value={id}>{brand}</option>
+              <option value={id} key={id}>{brand}</option>
             )}
           </Form.Control>
         </Form.Group>
-        <Form.Group className={"mt-3"}>
+        <Form.Group className={'mt-3'}>
           <Form.Label>Цена</Form.Label>
           <Form.Control
-            type={"text"}
-            name={"price"}
+            type={'text'}
+            name={'price'}
             onChange={handleModelForm}
           />
         </Form.Group>
-        <Form.Group className={"mt-3"}>
+        <Form.Group className={'mt-3'}>
           <Form.Label>Фотографии</Form.Label>
           <Form.Control
-            type={"text"}
-            name={"image"}
+            type={'text'}
+            name={'image'}
             onChange={handleModelForm}
           />
         </Form.Group>
-        <Button className={"mt-3 d-block m-auto"} type={"submit"} variant={"success"}>Добавить</Button>
+        <Button className={'mt-3 d-block m-auto'} type={'submit'} variant={'success'}>Добавить</Button>
       </Form>
     </>
   );

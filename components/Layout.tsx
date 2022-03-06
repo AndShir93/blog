@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import Header from "./Header";
+import React, { ReactNode } from 'react';
+import Header from './Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {

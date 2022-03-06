@@ -1,4 +1,4 @@
-import prisma from "../../../lib/prisma";
+import prisma from '../../../lib/prisma';
 
 export default async function sendTask(req, res) {
   const { day, title, description, id } = req.body;
