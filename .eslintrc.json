@@ -26,5 +26,10 @@
         "array-bracket-spacing": ["warn", "always"],
         "object-curly-spacing": ["warn", "always"],
         "quotes": ["warn", "single"]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
